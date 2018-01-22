@@ -1,0 +1,23 @@
+{
+  "name": "utils-graphite-fake-metrics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yesoreyeram/graphite_fake_metrics.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yesoreyeram/graphite_fake_metrics/issues"
+  },
+  "homepage": "https://github.com/yesoreyeram/graphite_fake_metrics#readme",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
