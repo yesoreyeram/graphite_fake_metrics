@@ -1,5 +1,8 @@
 var _ = require("lodash");
+var Graphite = require('./graphite');
 const INTERVAL_IN_SECONDS = 60;
+const GRAPHITE_URL = "192.168.99.100";
+const GRAPHITE_PORT = 2003;
 const config = {
     environments: ["prod", "preprod", "test", "dev"],
     server_types: ["web", "app", "db"],
@@ -28,7 +31,10 @@ var main = function () {
             });
         })
     })
-    console.log(JSON.stringify(metrics));
+    var graphite = new Graphite(GRAPHITE_URL, GRAPHITE_PORT, 'UTF-8');
+    graphite.connect(function () {
+        graphite.write(metrics, Date.now(), function (err) {});
+    });
 }
 main();
 setInterval(function () {
