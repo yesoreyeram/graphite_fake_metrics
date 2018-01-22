@@ -1,4 +1,5 @@
 var _ = require("lodash");
+const INTERVAL_IN_SECONDS = 60;
 const config = {
     server_types: ["web", "app", "db"],
     number_of_servers: 3,
@@ -27,3 +28,4 @@ var main = function () {
     console.log(JSON.stringify(metrics));
 }
 main();
+setInterval(function () {main()}, INTERVAL_IN_SECONDS * 1000)
