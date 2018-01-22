@@ -20,6 +20,8 @@ var main = function () {
                 _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".disk.c.freespace", Math.ceil(Math.random() * 100) * 1024 * 1024, Object);
                 _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".disk.d.freespace", Math.ceil(Math.random() * 100) * 1024 * 1024, Object);
                 _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".disk.e.freespace", Math.ceil(Math.random() * 100) * 1024 * 1024, Object);
+                _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".always_zero_value", 0, Object);
+                _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".metric_with_null", _.random([100, null, null, 200]), Object);
             });
         })
         _.each(config.application_type, (app_type) => {
