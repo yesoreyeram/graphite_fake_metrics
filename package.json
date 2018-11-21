@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/yesoreyeram/graphite_fake_metrics#readme",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.11"
   }
 }
