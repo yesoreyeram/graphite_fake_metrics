@@ -17,12 +17,12 @@ var main = function () {
             _.each(config.server_types, (server_type) => {
                 _.each(_.range(config.number_of_servers), (server_id) => {
                     _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".cpu.usage", Math.round(Math.random() * 100), Object);
-                    _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".mem.usage", Math.round(Math.random() * 100), Object);
+                    if (server_id !== "web_1") _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".mem.usage", Math.round(Math.random() * 100), Object);
                     _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".disk.c.freespace", Math.ceil(Math.random() * 100) * 1024 * 1024, Object);
                     _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".disk.d.freespace", Math.ceil(Math.random() * 100) * 1024 * 1024, Object);
                     _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".disk.e.freespace", Math.ceil(Math.random() * 100) * 1024 * 1024, Object);
                     _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".always_zero_value", 0, Object);
-                    _.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".metric_with_null", _.random([100, null, null, 200]), Object);
+                    //_.set(metrics, env + ".server_stats." + server_type + "_" + server_id + ".metric_with_null", _.random([100, null, null, 200]), Object);
                 });
             })
             _.each(config.application_type, (app_type) => {
@@ -36,7 +36,7 @@ var main = function () {
         })
         var graphite = new Graphite(GRAPHITE_URL, GRAPHITE_PORT, 'UTF-8');
         graphite.connect(function () {
-            graphite.write(metrics, Date.now(), function (err) {});
+            graphite.write(metrics, Date.now(), function (err) { });
         });
     } catch (error) {
         console.log(error);
